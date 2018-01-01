@@ -12,6 +12,11 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
 
 
     private String [] mWeatherData;
+
+    public ForecastAdapter(String[] mWeatherData) {
+        this.mWeatherData = mWeatherData;
+    }
+
     class ForecastAdapterViewHolder extends RecyclerView.ViewHolder{
 
 
