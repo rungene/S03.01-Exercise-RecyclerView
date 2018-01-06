@@ -21,13 +21,13 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
         this.mWeatherData = mWeatherData;
     }
 
-    class ForecastAdapterViewHolder extends RecyclerView.ViewHolder{
-        TextView mWeatherTextView;
+   public class ForecastAdapterViewHolder extends RecyclerView.ViewHolder{
+       public final TextView mWeatherTextView;
 
 
-        public ForecastAdapterViewHolder(View itemView) {
-            super(itemView);
-            mWeatherTextView = (TextView)itemView.findViewById(R.id.tv_weather_data);
+        public ForecastAdapterViewHolder(View view) {
+            super(view);
+            mWeatherTextView = (TextView)view.findViewById(R.id.tv_weather_data);
         }
 
     }
@@ -49,13 +49,21 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
 
     @Override
     public void onBindViewHolder(ForecastAdapter.ForecastAdapterViewHolder holder, int position) {
-
+String weatherForThisDay = mWeatherData[position];
+holder.mWeatherTextView.setText(weatherForThisDay);
 
 
     }
 
     @Override
     public int getItemCount() {
+        if (null==mWeatherData)
         return 0;
+
+        return mWeatherData.length;
+    }
+    public void setWeatherData (String[] weatherData){
+        mWeatherData = weatherData;
+        notifyDataSetChanged();
     }
 }
